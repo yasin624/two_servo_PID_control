@@ -4,14 +4,12 @@
 int x,y,z,e; 
 unsigned long basla= millis();
 
-int WindowSize = 1000;           // Pulse için belirlediğimiz maksimum süre.
-unsigned long windowStartTime;
-//##################################################   Servo
- double  Kp=0.005, Ki=0.05, Kd=0.33,son_hata,pid_i;
+
+//################################################ PID deişkenleri
+double  Kp=0.005, Ki=0.05, Kd=0.33,son_hata,pid_i;
            // Ayar parametrelerimizi tanımlayıp belirliyoruz.  Kp=0.003, Ki=0.03, Kd=0.33,son_hata,pid_i
 
-
-           
+//##################################################   Servo           
 #include <Servo.h>
 
 
@@ -75,11 +73,10 @@ void loop() {
 
   
 
-
-
   double error = setpoint - gelendeger;
   if (error != 0){
   unsigned long gecen_zaman = millis()-basla;
+   
   /*
   Serial.println("giriş değerleri ");
   Serial.println("------------------------------------------- ");
@@ -100,6 +97,7 @@ void loop() {
     if (-1>(30*motor_gucu)<181 and  myservo2.read()==0){
       myservo1.write(-30*motor_gucu);
     }
+   
   /*
   Serial.println("çıkış değerleri ");
   Serial.println("------------------------------------------- ");
@@ -119,22 +117,6 @@ void loop() {
   
   */
   
-  /*
-   
-  
-  
-  
-  if (motor_gucu <0){
-    Serial.println("burda abe ");
-    myservo1.write(motor_gucu);
-  }
- 
-  else  
-  {
-    myservo2.write(motor_gucu);
-    Serial.println("burda abe 2");
-  }
-  */
   }
   delay(100);
   }
